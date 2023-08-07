@@ -1,0 +1,17 @@
+# Random files
+.idea/
+__pycache__/
+*/__pycache__/
+.DS_Store
+collect_submission.sh
+
+# pytorch models
+*.bin
+*.bin.optim
+
+# static files in some sub-folder
+static/*
+templates/*
+
+# log of the running webserver in the background
+nohup.out

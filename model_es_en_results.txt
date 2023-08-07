@@ -1,0 +1,52 @@
+Training on NVIDIA Tesla K80 GPU:
+----------------------------------------------------------------------------------------------------
+.....
+epoch 1, iter 170, avg. loss 341.87, avg. ppl 138347033.27 cum. examples 10880, speed 2378.44 words/sec, time elapsed 83.36 sec
+.....
+.....
+epoch 29, iter 97980, avg. loss 86.85, avg. ppl 142.82 cum. examples 126720, speed 2264.68 words/sec, time elapsed 48749.40 sec
+epoch 29, iter 97990, avg. loss 85.47, avg. ppl 144.39 cum. examples 127360, speed 2148.68 words/sec, time elapsed 48754.52 sec
+epoch 29, iter 98000, avg. loss 85.16, avg. ppl 127.63 cum. examples 128000, speed 2322.20 words/sec, time elapsed 48759.36 sec
+epoch 29, iter 98000, cum. loss 87.05, cum. ppl 138.12 cum. examples 128000
+begin validation ...
+validation: iter 98000, dev. ppl 375.210597
+save currently the best model to [model.bin]
+save model parameters to [model.bin]
+epoch 29, iter 98010, avg. loss 91.75, avg. ppl 140.00 cum. examples 640, speed 1194.75 words/sec, time elapsed 48769.31 sec
+epoch 29, iter 98020, avg. loss 88.18, avg. ppl 147.98 cum. examples 1280, speed 2219.53 words/sec, time elapsed 48774.40 sec
+epoch 29, iter 98030, avg. loss 90.66, avg. ppl 148.42 cum. examples 1920, speed 2428.24 words/sec, time elapsed 48779.18 sec
+epoch 29, iter 98040, avg. loss 84.51, avg. ppl 122.76 cum. examples 2560, speed 2296.98 words/sec, time elapsed 48784.07 sec
+epoch 29, iter 98050, avg. loss 81.78, avg. ppl 128.82 cum. examples 3200, speed 2257.83 words/sec, time elapsed 48788.84 sec
+epoch 29, iter 98060, avg. loss 85.95, avg. ppl 142.02 cum. examples 3840, speed 2244.68 words/sec, time elapsed 48793.79 sec
+epoch 29, iter 98070, avg. loss 84.77, avg. ppl 137.86 cum. examples 4480, speed 2410.18 words/sec, time elapsed 48798.36 sec
+epoch 29, iter 98080, avg. loss 86.89, avg. ppl 150.31 cum. examples 5120, speed 2120.97 words/sec, time elapsed 48803.59 sec
+epoch 29, iter 98090, avg. loss 87.45, avg. ppl 134.82 cum. examples 5760, speed 2259.88 words/sec, time elapsed 48808.64 sec
+epoch 29, iter 98100, avg. loss 88.74, avg. ppl 140.65 cum. examples 6400, speed 2302.98 words/sec, time elapsed 48813.62 sec
+epoch 29, iter 98110, avg. loss 92.36, avg. ppl 155.51 cum. examples 7040, speed 2337.44 words/sec, time elapsed 48818.64 sec
+epoch 29, iter 98120, avg. loss 91.45, avg. ppl 154.28 cum. examples 7680, speed 2359.32 words/sec, time elapsed 48823.56 sec
+epoch 29, iter 98130, avg. loss 88.83, avg. ppl 147.61 cum. examples 8320, speed 2370.22 words/sec, time elapsed 48828.36 sec
+epoch 29, iter 98140, avg. loss 87.23, avg. ppl 136.15 cum. examples 8960, speed 2260.67 words/sec, time elapsed 48833.39 sec
+epoch 29, iter 98150, avg. loss 87.77, avg. ppl 152.67 cum. examples 9600, speed 2310.50 words/sec, time elapsed 48838.22 sec
+epoch 29, iter 98160, avg. loss 85.04, avg. ppl 129.14 cum. examples 10240, speed 2373.20 words/sec, time elapsed 48842.94 sec
+reached maximum number of epochs!
+
+Testing:
+----------------------------------------------------------------------------------------------------
+A4-test_data:
+A4_model: Your BLEU score: 22.17292788579854
+A5_model: Your BLEU score: 23.628087879623465
+
+A5-test_data:
+A4_model: Your BLEU score: 22.654748871081093
+A5_model: Your BLEU score: 24.10655629108521
+----------------------------------------------------------------------------------------------------
+
+Changing beam-size and max-decoding-time-step to see how it affects model performance:
+python run.py decode model_es_en.bin ./en_es_data/test.es ./en_es_data/test.en ./outputs/test_beam-size_10_and_max-decoding-time-step_140.txt --beam-size=10 --max-decoding-time-step=140
+beam-size = 10, max-decoding-time-step = 140 : Your BLEU score: 23.956886385383207
+
+python run.py decode model_es_en.bin ./en_es_data/test.es ./en_es_data/test.en ./outputs/test_beam-size_20_and_max-decoding-time-step_200.txt --beam-size=20 --max-decoding-time-step=200
+beam-size = 20, max-decoding-time-step = 200 : Your BLEU score: 23.613614622899938
+
+python run.py decode model_es_en.bin ./en_es_data/test.es ./en_es_data/test.en ./outputs/test_beam-size_5_and_max-decoding-time-step_200.txt --beam-size=5 --max-decoding-time-step=200
+beam-size = 5, max-decoding-time-step = 200 : Your BLEU score: 24.106128174694955
